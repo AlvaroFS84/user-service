@@ -5,7 +5,7 @@
                                       https://raw.githubusercontent.com/doctrine/doctrine2/main/doctrine-mapping.xsd">
 
     <!-- Definición de la entidad -->
-    <entity name="App\Infrastructure\Entity\User" table="`user`" repository-class="App\Infrastructure\Repository\UserRepository">
+    <entity name="App\Infrastructure\Entity\User" table="`user`" repository-class="App\Infrastructure\Service\UserRepository">
         
         <!-- Identificador (ID) -->
         <id name="id" type="uuid" column="id">

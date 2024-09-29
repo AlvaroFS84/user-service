@@ -41,6 +41,6 @@ class User
 
     public function setPassword(Password $password): void
     {
-        $this->password = $password; /
+        $this->password = $password;
     }
 }
