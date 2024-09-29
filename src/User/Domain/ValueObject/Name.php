@@ -4,22 +4,26 @@ namespace App\Domain\ValueObject;
 
 use App\Domain\Exception\InvalidParameterException;
 
-    class Name{
+class Name
+{
+    public function __construct(
+        private string $name
+    ) { 
+        $this->validate();
+    }
 
-        public function __construct(
-            private string $name
-        )
-        { 
-            $this->validate();
+    private function validate(): void
+    {
+        if (strlen($this->name) === 0) {
+            throw new InvalidParameterException('User name cannot be empty');
         }
-
-        private function validate()
-        {
-            if(strlen($this->name) === 0){
-                throw new InvalidParameterException('User name cannot be empty');
-            }
-            if(strlen($this->name) > 255){
-                throw new InvalidParameterException('User name cannot be longer than 255 characters');
-            }
+        if (strlen($this->name) > 255) {
+            throw new InvalidParameterException('User name cannot be longer than 255 characters');
         }
     }
+
+    public function value(): string
+    {
+        return $this->name;
+    }
+}

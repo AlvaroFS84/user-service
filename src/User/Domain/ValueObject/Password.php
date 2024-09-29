@@ -22,4 +22,9 @@ use App\Domain\Exception\InvalidParameterException;
                 throw new InvalidParameterException('User password cannot be longer than 255 characters');
             }
         }
+
+        public function value(): string
+        {
+            return $this->password;
+        }
     }
