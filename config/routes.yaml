@@ -7,3 +7,8 @@ controllers:
 app_conference:
     path: /conference
     controller: App\Controller\ConferenceController::index
+
+app_create:
+    path: /create-user
+    controller: App\Infrastructure\Controller\UserController::createUser
+    methods: [POST]

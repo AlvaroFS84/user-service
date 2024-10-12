@@ -19,6 +19,21 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+    
+    App\Infrastructure\Controller\UserController:
+        tags: ['controller.service_arguments']
+        
+    App\Application\Command\CreateUserCommandHandler:
+        tags: [messenger.message_handler]
+    
+    App\Application\UseCase\CreateUserUseCase:
+        arguments:
+            $userRepository: '@App\Domain\Repository\UserRepositoryInterface'
+    
+    App\Domain\Repository\UserRepositoryInterface:
+        alias: App\Infrastructure\Repository\DoctrineUserRepository
+    
+    App\Infrastructure\Repository\DoctrineUserRepository: 
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

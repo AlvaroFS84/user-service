@@ -3,10 +3,10 @@
 namespace App\Infrastructure\Repository;
 
 use App\Domain\Entity\User;
-use App\Domain\Repository\UserRepository;
+use App\Domain\Repository\UserRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
-class DoctrineUserRepository implements UserRepository
+class DoctrineUserRepository implements UserRepositoryInterface
 {
     private EntityManagerInterface $entityManager;
 
