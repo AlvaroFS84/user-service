@@ -5,7 +5,7 @@
                                       https://raw.githubusercontent.com/doctrine/doctrine2/main/doctrine-mapping.xsd">
 
     <!-- Definición de la entidad -->
-    <entity name="App\Infrastructure\Entity\User" table="`user`" repository-class="App\Infrastructure\Service\UserRepository">
+    <entity name="App\Domain\Entity\User" table="`user`" repository-class="App\Infrastructure\Service\UserRepository">
         
         <!-- Identificador (ID) -->
         <id name="id" type="uuid" column="id">
@@ -13,10 +13,10 @@
         </id>
 
         <!-- Definición de los campos -->
-        <field name="email" type="string" column="email" length="255" nullable="true"/>
-        <field name="name" type="string" column="name" length="255" nullable="true"/>
-        <field name="surname" type="string" column="surname" length="255" nullable="true"/>
-        <field name="password" type="string" column="password" length="255" nullable="true"/>
+        <embedded name="email" class="App\Domain\ValueObject\Email" use-column-prefix="false"/>
+        <embedded name="name" class="App\Domain\ValueObject\Name" use-column-prefix="false"/>
+        <embedded name="surname" class="App\Domain\ValueObject\Surname" use-column-prefix="false"/>
+        <embedded name="password" class="App\Domain\ValueObject\Password" use-column-prefix="false"/>
         
         <!-- Definición de la columna JSON para los roles -->
         <field name="roles" type="json" column="roles"/>

@@ -6,6 +6,7 @@ use App\Domain\Exception\InvalidParameterException;
 
 class Id
 {
+
     public function __construct(private string $value)
     {}
 
@@ -14,7 +15,7 @@ class Id
         return $this->value;
     }
 
-    private function validate(): void
+    /*private function validate(): void
     {
         if (strlen($this->value) === 0) {
             throw new InvalidParameterException('User name cannot be empty');
@@ -22,5 +23,5 @@ class Id
         if (strlen($this->value) > 255) {
             throw new InvalidParameterException('User name cannot be longer than 255 characters');
         }
-    }
+    }*/
 }

@@ -7,23 +7,23 @@ use App\Domain\Exception\InvalidParameterException;
 class Name
 {
     public function __construct(
-        private string $name
+        private string $value
     ) { 
         $this->validate();
     }
 
     private function validate(): void
     {
-        if (strlen($this->name) === 0) {
+        if (strlen($this->value) === 0) {
             throw new InvalidParameterException('User name cannot be empty');
         }
-        if (strlen($this->name) > 255) {
+        if (strlen($this->value) > 255) {
             throw new InvalidParameterException('User name cannot be longer than 255 characters');
         }
     }
 
     public function value(): string
     {
-        return $this->name;
+        return $this->value;
     }
 }

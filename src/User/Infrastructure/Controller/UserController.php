@@ -3,7 +3,7 @@
 namespace App\Infrastructure\Controller;
 
 use App\Application\Command\CreateUserCommand;
-use Ramsey\Uuid\Uuid;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,17 +17,28 @@ class UserController extends AbstractController
     public function createUser(Request $request):JsonResponse
     {
 
-        $data = json_decode($request->getContent(),true);
-        $userCommand = new CreateUserCommand(
-            Uuid::uuid4()->toString(),
-            $data['email'],
-            $data['name'],
-            $data['surname'],
-            $data['password']
-        );
+        try{
+            $data = json_decode($request->getContent(),true);
+
+            $userCommand = new CreateUserCommand(
+                $data['email'],
+                $data['name'],
+                $data['surname'],
+                $data['password']
+            );
+
+            $this->bus->dispatch($userCommand);
+        }catch(Exception $e){
+            return new JsonResponse([
+                'status' => 'failed',
+                'message' => $e->getMessage()
+            ],JsonResponse::HTTP_BAD_REQUEST);
+        }
         
-        $this->bus->dispatch($userCommand);
         
-        return new JsonResponse($data);
+        return new JsonResponse([
+            'status' => 'ok',
+            'message' => 'User created'
+        ], JsonResponse::HTTP_CREATED);
     }
 }

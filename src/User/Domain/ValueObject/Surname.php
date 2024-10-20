@@ -7,7 +7,7 @@ use App\Domain\Exception\InvalidParameterException;
     class Surname{
 
         public function __construct(
-            private string $surname
+            private string $value
         )
         { 
             $this->validate();
@@ -15,16 +15,16 @@ use App\Domain\Exception\InvalidParameterException;
 
         private function validate()
         {
-            if(strlen($this->surname) === 0){
+            if(strlen($this->value) === 0){
                 throw new InvalidParameterException('User surname cannot be empty');
             }
-            if(strlen($this->surname) > 255){
+            if(strlen($this->value) > 255){
                 throw new InvalidParameterException('User surname cannot be longer than 255 characters');
             }
         }
 
         public function value(): string
         {
-            return $this->surname;
+            return $this->value;
         }
     }
