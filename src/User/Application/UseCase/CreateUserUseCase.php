@@ -12,13 +12,14 @@ use App\Domain\ValueObject\Name;
 use App\Domain\ValueObject\Password;
 use App\Domain\ValueObject\Surname;
 use Ramsey\Uuid\Uuid;
-
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class CreateUserUseCase
 {
 
     public function __construct(
-        private UserRepositoryInterface $userRepository
+        private UserRepositoryInterface $userRepository,
+        private UserPasswordHasherInterface $passwordHasher
     ){}
 
     public function __invoke(CreateUserCommand $createUserCommand):void
@@ -60,13 +61,12 @@ class CreateUserUseCase
             $email,
             $password
         );
-        $user = new User(
-            Uuid::uuid4(),
-            new Name($createUserCommand->getName()),
-            new Surname($createUserCommand->getSurname()),
-            new Email($createUserCommand->getEmail()),
-            new Password($createUserCommand->getPassword())
+
+        $hashedPassword = $this->passwordHasher->hashPassword(
+            $user,
+            $createUserCommand->getPassword()
         );
+        $user->setVOPassword(new Password($hashedPassword));
             
         $this->userRepository->save($user);
     }

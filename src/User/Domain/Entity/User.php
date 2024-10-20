@@ -67,7 +67,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->password;
     }
 
-    public function seVOPassword(Password $password): void
+    public function setVOPassword(Password $password): void
     {
         $this->password = $password;
     }
