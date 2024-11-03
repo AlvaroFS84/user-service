@@ -38,9 +38,13 @@ services:
     App\Domain\Repository\UserRepositoryInterface:
         alias: App\Infrastructure\Repository\DoctrineUserRepository
     
+    App\Infrastructure\Service\Interface\ResponseServiceinterface:
+        alias: App\Infrastructure\Service\ResponseService
     
     
     App\Infrastructure\Repository\DoctrineUserRepository: 
+
+    App\Infrastructure\Service\ResponseService:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
