@@ -4,6 +4,7 @@ namespace App\Application\UseCase;
 
 use App\Application\Command\CreateUserCommand;
 use App\Domain\Entity\User;
+use App\Domain\Exception\EmailAlreadyExistsException;
 use App\Domain\Exception\InvalidParameterException;
 use App\Domain\Exception\MultipleParametersErrorException;
 use App\Domain\Repository\UserRepositoryInterface;
@@ -16,6 +17,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class CreateUserUseCase
 {
+    //crear un contructor private y refactorizar la parte del password
 
     public function __construct(
         private UserRepositoryInterface $userRepository,
@@ -25,6 +27,12 @@ class CreateUserUseCase
     public function __invoke(CreateUserCommand $createUserCommand):void
     {
         $errors = []; // Array para acumular errores
+
+        $user  =  $this->userRepository->findByEmail($createUserCommand->getEmail());
+
+        if(!is_null($user)){
+            throw new EmailAlreadyExistsException();
+        }
 
         try {
             $name = new Name($createUserCommand->getName());

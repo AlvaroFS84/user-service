@@ -26,12 +26,19 @@ services:
     App\Application\Command\CreateUserCommandHandler:
         tags: [messenger.message_handler]
     
+    App\Infrastructure\Service\UserRepository:
+        arguments:
+            $registry: '@doctrine'
+        tags: ['doctrine.repository_service']
+    
     App\Application\UseCase\CreateUserUseCase:
         arguments:
-            $userRepository: '@App\Domain\Repository\UserRepositoryInterface'
+            $userRepository: '@App\Infrastructure\Repository\DoctrineUserRepository'
     
     App\Domain\Repository\UserRepositoryInterface:
         alias: App\Infrastructure\Repository\DoctrineUserRepository
+    
+    
     
     App\Infrastructure\Repository\DoctrineUserRepository: 
 

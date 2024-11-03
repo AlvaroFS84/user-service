@@ -29,16 +29,20 @@ class UserController extends AbstractController
 
             $this->bus->dispatch($userCommand);
         }catch(Exception $e){
-            return new JsonResponse([
+
+            $respondeData = json_encode([
                 'status' => 'failed',
                 'message' => $e->getMessage()
-            ],JsonResponse::HTTP_BAD_REQUEST);
+            ]);
+            return new JsonResponse($respondeData,JsonResponse::HTTP_BAD_REQUEST,[],JSON_UNESCAPED_UNICODE);
         }
-        
-        
-        return new JsonResponse([
+
+        $respondeData = json_encode([
             'status' => 'ok',
             'message' => 'User created'
-        ], JsonResponse::HTTP_CREATED);
+        ]);
+        
+        
+        return new JsonResponse($respondeData, JsonResponse::HTTP_CREATED,[],JSON_UNESCAPED_UNICODE);
     }
 }
