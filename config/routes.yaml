@@ -9,6 +9,9 @@ app_conference:
     controller: App\Controller\ConferenceController::index
 
 app_create:
-    path: /create-user
+    path: /api/register
     controller: App\Infrastructure\Controller\UserController::createUser
     methods: [POST]
+
+api_login_check:
+    path: /api/login_check

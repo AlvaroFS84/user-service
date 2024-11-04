@@ -52,12 +52,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->surname = $surname; 
     }
 
-    public function getEmail(): Email
+    public function getEmail(): string
+    {
+        return $this->email->value();
+    }
+
+    public function setEmail(String $email): void
+    {
+        $this->$email = new Email($email);
+    }
+
+    public function getVOEmail(): Email
     {
         return $this->email;
     }
 
-    public function setEmail(Email $email): void
+    public function setVOEmail(Email $email): void
     {
         $this->$email = $email;
     }
