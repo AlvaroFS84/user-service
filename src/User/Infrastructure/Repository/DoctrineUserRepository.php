@@ -32,7 +32,7 @@ class DoctrineUserRepository implements UserRepositoryInterface
         return $this->entityManager->createQueryBuilder()
             ->select('u')
             ->from(User::class, 'u')
-            ->where('u.email.value = :email')
+            ->where('u.email = :email')
             ->setParameter('email', $email)
             ->getQuery()
             ->getOneOrNullResult();

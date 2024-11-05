@@ -20,7 +20,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         private Email $email,
         private Password $password,
         private array $roles = []
-    ) {}
+    ) {
+        $this->roles[] = 'ROLE_USER';
+    }
 
     public function getId(): UuidInterface
     {
