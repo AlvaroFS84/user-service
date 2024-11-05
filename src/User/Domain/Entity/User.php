@@ -19,7 +19,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         private Surname $surname,
         private Email $email,
         private Password $password,
-        private array $roles = []
+        private array $roles = ['ROLE_USER']
     ) {}
 
     public function getId(): UuidInterface
@@ -98,11 +98,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getRoles(): array
     {
-        // Garantizar que cada usuario tenga al menos el rol ROLE_USER
-        if (empty($this->roles)) {
-            $this->roles[] = 'ROLE_USER';
-        }
-
         return array_unique($this->roles);
     }
 
