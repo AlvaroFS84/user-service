@@ -6,6 +6,7 @@ use App\Domain\ValueObject\Email;
 use App\Domain\ValueObject\Name;
 use App\Domain\ValueObject\Password;
 use App\Domain\ValueObject\Surname;
+use DateTimeImmutable;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -13,6 +14,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    private DateTimeImmutable $createdAt;
+    private DateTimeImmutable $updatedAt;
+    
     public function __construct(
         private UuidInterface $id,
         private Name $name,
@@ -20,7 +24,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         private Email $email,
         private Password $password,
         private array $roles = ['ROLE_USER']
-    ) {}
+    ) {
+        $this->createdAt = new DateTimeImmutable();
+        $this->updatedAt = new DateTimeImmutable();
+    }
 
     public function getId(): UuidInterface
     {
@@ -126,5 +133,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // Si hay información sensible que deseas eliminar, hazlo aquí.
         // Por ejemplo, si usaste una contraseña sin encriptar durante la autenticación:
         // $this->plainPassword = null; // O cualquier otro campo temporal.
+    }
+
+    public function initializeCreatedAt(): void
+    {
+        $this->createdAt = new DateTimeImmutable();
+    }
+
+    public function updateTimestamp(): void
+    {
+        $this->updatedAt = new DateTimeImmutable();
+    }
+
+    public function getCreatedAt(): DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function getUpdatedAt(): DateTimeImmutable
+    {
+        return $this->updatedAt;
     }
 }

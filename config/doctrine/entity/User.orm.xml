@@ -20,5 +20,20 @@
         
         <!-- Definición de la columna JSON para los roles -->
         <field name="roles" type="json" column="roles"/>
+
+        <!-- Campos createdAt y updatedAt -->
+        <field name="createdAt" type="datetime_immutable" column="created_at">
+            <options>
+                <option name="default">CURRENT_TIMESTAMP</option>
+            </options>
+        </field>
+        <field name="updatedAt" type="datetime_immutable" column="updated_at" />
+
+        <!-- Ciclo de vida para gestionar createdAt y updatedAt -->
+        <lifecycle-callbacks>
+            <lifecycle-callback type="prePersist" method="initializeCreatedAt"/>
+            <lifecycle-callback type="preUpdate" method="updateTimestamp"/>
+        </lifecycle-callbacks>
+        
     </entity>
 </doctrine-mapping>
