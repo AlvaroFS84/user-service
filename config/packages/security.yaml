@@ -7,7 +7,7 @@ security:
         app_user_provider:
             entity:
                 class: App\Domain\Entity\User
-                property: email.value
+                property: email
         users_in_memory: { memory: null }
         jwt:
             lexik_jwt: ~
