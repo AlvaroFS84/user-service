@@ -5,7 +5,7 @@
                                       https://raw.githubusercontent.com/doctrine/doctrine2/main/doctrine-mapping.xsd">
 
     <!-- Definición del objeto embebido -->
-    <embeddable name="App\Domain\ValueObject\Email">
+    <embeddable name="App\User\Domain\ValueObject\Email">
         <!-- Campo de la clase Email -->
         <field name="value" column="email" type="string" length="255" nullable="false"/>
     </embeddable>

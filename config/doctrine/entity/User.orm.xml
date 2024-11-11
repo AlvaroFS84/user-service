@@ -5,7 +5,7 @@
                                       https://raw.githubusercontent.com/doctrine/doctrine2/main/doctrine-mapping.xsd">
 
     <!-- Definición de la entidad -->
-    <entity name="App\Domain\Entity\User" table="`user`" repository-class="App\Infrastructure\Service\UserRepository">
+    <entity name="App\User\Domain\Entity\User" table="`user`" repository-class="App\User\Infrastructure\Service\UserRepository">
         
         <!-- Identificador (ID) -->
         <id name="id" type="uuid" column="id">
@@ -13,10 +13,10 @@
         </id>
 
         <!-- Definición de los campos -->
-        <embedded name="email" class="App\Domain\ValueObject\Email" use-column-prefix="false"/>
-        <embedded name="name" class="App\Domain\ValueObject\Name" use-column-prefix="false"/>
-        <embedded name="surname" class="App\Domain\ValueObject\Surname" use-column-prefix="false"/>
-        <embedded name="password" class="App\Domain\ValueObject\Password" use-column-prefix="false"/>
+        <embedded name="email" class="App\User\Domain\ValueObject\Email" use-column-prefix="false"/>
+        <embedded name="name" class="App\User\Domain\ValueObject\Name" use-column-prefix="false"/>
+        <embedded name="surname" class="App\User\Domain\ValueObject\Surname" use-column-prefix="false"/>
+        <embedded name="password" class="App\User\Domain\ValueObject\Password" use-column-prefix="false"/>
         
         <!-- Definición de la columna JSON para los roles -->
         <field name="roles" type="json" column="roles"/>

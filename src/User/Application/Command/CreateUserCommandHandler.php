@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Application\Command;
+namespace App\User\Application\Command;
 
-use App\Application\UseCase\CreateUserUseCase;
+use App\User\Application\UseCase\CreateUserUseCase;
 
 class CreateUserCommandHandler
 {

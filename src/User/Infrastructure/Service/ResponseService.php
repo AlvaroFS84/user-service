@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Infrastructure\Service;
+namespace App\User\Infrastructure\Service;
 
-use App\Infrastructure\Service\Interface\ResponseServiceinterface;
+use App\User\Infrastructure\Service\Interface\ResponseServiceinterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ResponseService implements ResponseServiceinterface{

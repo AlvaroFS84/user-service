@@ -10,7 +10,7 @@ app_conference:
 
 app_create:
     path: /api/register
-    controller: App\Infrastructure\Controller\UserController::createUser
+    controller: App\User\Infrastructure\Controller\UserController::createUser
     methods: [POST]
 
 api_login_check:

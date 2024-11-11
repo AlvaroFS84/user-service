@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Infrastructure\Service\Interface;
+namespace App\User\Infrastructure\Service\Interface;
 
-interface ResponseServiceinterface{
+interface ResponseServiceInterface{
 
     public function response(array $data, int $code, array $headers = []);
 }

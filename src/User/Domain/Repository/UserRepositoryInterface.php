@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Repository;
+namespace App\User\Domain\Repository;
 
-use App\Domain\Entity\User;
+use App\User\Domain\Entity\User;
 
 interface UserRepositoryInterface
 {

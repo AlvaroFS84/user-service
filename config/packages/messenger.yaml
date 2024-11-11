@@ -12,7 +12,7 @@ framework:
         routing:
             # Route your messages to the transports
             # 'App\Message\YourMessage': async
-            'App\Application\Command\CreateUserCommand': sync
+            'App\User\Application\Command\CreateUserCommand': sync
 
 # when@test:
 #    framework:

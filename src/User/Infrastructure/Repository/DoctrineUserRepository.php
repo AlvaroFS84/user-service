@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Infrastructure\Repository;
+namespace  App\User\Infrastructure\Repository;
 
-use App\Domain\Entity\User;
-use App\Domain\Repository\UserRepositoryInterface;
-use App\Domain\ValueObject\Email;
+use App\User\Domain\Entity\User;
+use App\User\Domain\Repository\UserRepositoryInterface;
+use App\User\Domain\ValueObject\Email;
 use Doctrine\ORM\EntityManagerInterface;
 
 class DoctrineUserRepository implements UserRepositoryInterface

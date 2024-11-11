@@ -20,31 +20,31 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
     
-    App\Infrastructure\Controller\UserController:
+    App\User\Infrastructure\Controller\UserController:
         tags: ['controller.service_arguments']
         
-    App\Application\Command\CreateUserCommandHandler:
+    App\User\Application\Command\CreateUserCommandHandler:
         tags: [messenger.message_handler]
     
-    App\Infrastructure\Service\UserRepository:
+    App\User\Infrastructure\Service\UserRepository:
         arguments:
             $registry: '@doctrine'
         tags: ['doctrine.repository_service']
     
-    App\Application\UseCase\CreateUserUseCase:
+    App\User\Application\UseCase\CreateUserUseCase:
         arguments:
-            $userRepository: '@App\Infrastructure\Repository\DoctrineUserRepository'
+            $userRepository: '@App\User\Infrastructure\Repository\DoctrineUserRepository'
     
-    App\Domain\Repository\UserRepositoryInterface:
-        alias: App\Infrastructure\Repository\DoctrineUserRepository
+    App\User\Domain\Repository\UserRepositoryInterface:
+        alias: App\User\Infrastructure\Repository\DoctrineUserRepository
     
-    App\Infrastructure\Service\Interface\ResponseServiceinterface:
-        alias: App\Infrastructure\Service\ResponseService
+    App\User\Infrastructure\Service\Interface\ResponseServiceinterface:
+        alias: App\User\Infrastructure\Service\ResponseService
     
     
-    App\Infrastructure\Repository\DoctrineUserRepository: 
+    App\User\Infrastructure\Repository\DoctrineUserRepository: 
 
-    App\Infrastructure\Service\ResponseService:
+    App\User\Infrastructure\Service\ResponseService:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

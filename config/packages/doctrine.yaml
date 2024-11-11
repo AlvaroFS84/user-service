@@ -22,13 +22,13 @@ doctrine:
                 type: xml
                 is_bundle: false
                 dir: '%kernel.project_dir%/config/doctrine/entity'
-                prefix: 'App\Domain\Entity'
+                prefix: 'App\User\Domain\Entity'
                 alias: User
             VO:
                 type: xml
                 is_bundle: false
                 dir: '%kernel.project_dir%/config/doctrine/vo'
-                prefix: 'App\Domain\ValueObject'
+                prefix: 'App\User\Domain\ValueObject'
                 alias: Vo
 
 when@test:

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Domain\Entity;
+namespace App\User\Domain\Entity;
 
-use App\Domain\ValueObject\Email;
-use App\Domain\ValueObject\Name;
-use App\Domain\ValueObject\Password;
-use App\Domain\ValueObject\Surname;
+use App\User\Domain\ValueObject\Email;
+use App\User\Domain\ValueObject\Name;
+use App\User\Domain\ValueObject\Password;
+use App\User\Domain\ValueObject\Surname;
 use DateTimeImmutable;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;

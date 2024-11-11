@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Application\UseCase;
+namespace App\User\Application\UseCase;
 
-use App\Application\Command\CreateUserCommand;
-use App\Domain\Entity\User;
-use App\Domain\Exception\EmailAlreadyExistsException;
-use App\Domain\Exception\InvalidParameterException;
-use App\Domain\Exception\MultipleParametersErrorException;
-use App\Domain\Repository\UserRepositoryInterface;
-use App\Domain\ValueObject\Email;
-use App\Domain\ValueObject\Name;
-use App\Domain\ValueObject\Password;
-use App\Domain\ValueObject\Surname;
+use App\User\Application\Command\CreateUserCommand;
+use App\User\Domain\Entity\User;
+use App\User\Domain\Exception\EmailAlreadyExistsException;
+use App\User\Domain\Exception\InvalidParameterException;
+use App\User\Domain\Exception\MultipleParametersErrorException;
+use App\User\Domain\Repository\UserRepositoryInterface;
+use App\User\Domain\ValueObject\Email;
+use App\User\Domain\ValueObject\Name;
+use App\User\Domain\ValueObject\Password;
+use App\User\Domain\ValueObject\Surname;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 

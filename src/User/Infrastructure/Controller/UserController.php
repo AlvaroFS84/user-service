@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Infrastructure\Controller;
+namespace App\User\Infrastructure\Controller;
 
-use App\Application\Command\CreateUserCommand;
-use App\Infrastructure\Service\Interface\ResponseServiceinterface;
+use App\User\Application\Command\CreateUserCommand;
+use App\User\Infrastructure\Service\Interface\ResponseServiceinterface;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
