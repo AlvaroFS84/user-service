@@ -2,7 +2,7 @@
 
 namespace App\User\Domain\ValueObject;
 
-use App\Domain\Exception\InvalidParameterException;
+//use App\Domain\Exception\InvalidParameterException;
 
 class Id
 {

@@ -2,7 +2,7 @@
 
 namespace App\User\Domain\ValueObject;
 
-use App\Domain\Exception\InvalidParameterException;
+use App\User\Domain\Exception\InvalidParameterException;
 
     class Password{
 
